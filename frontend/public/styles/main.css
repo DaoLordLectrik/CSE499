@@ -1,0 +1,294 @@
+/**
+ * Main Stylesheet
+ * Custom styles for CodeSnippet Manager
+ */
+
+/* Root Variables for Theme Colors */
+:root {
+  --primary-color: #3273dc;
+  --success-color: #48c774;
+  --danger-color: #f14668;
+  --dark-bg: #1e1e1e;
+  --code-bg: #2d2d2d;
+  --border-radius: 6px;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
+/* Navbar Customization */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-item .title {
+  margin-bottom: 0;
+}
+
+/* Search Container */
+#searchContainer {
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#searchInput {
+  border: 2px solid #dbdbdb;
+  transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(50, 115, 220, 0.1);
+}
+
+/* Snippet Cards */
+.snippet-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.snippet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Snippet Header */
+.snippet-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.snippet-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #363636;
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+}
+
+.snippet-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #7a7a7a;
+}
+
+.language-tag {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* Snippet Body */
+.snippet-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Code Display */
+.code-container {
+  background: var(--code-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  flex-grow: 1;
+}
+
+.code-container pre {
+  margin: 0;
+  background: transparent;
+}
+
+.code-container code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #a9b7c6;
+}
+
+/* Tags Display */
+.snippet-tags {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.snippet-tags .tag {
+  background-color: #f0f0f0;
+  color: #363636;
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.snippet-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.copy-btn,
+.delete-btn {
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background-color: var(--success-color) !important;
+  border-color: var(--success-color) !important;
+}
+
+.delete-btn:hover {
+  background-color: var(--danger-color) !important;
+  border-color: var(--danger-color) !important;
+}
+
+/* Modal Customization */
+.modal-card {
+  max-width: 700px;
+  width: 90%;
+}
+
+.modal-card-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Form Elements */
+.textarea {
+  font-family: 'Courier New', Courier, monospace;
+  resize: vertical;
+}
+
+/* Tag Input Container */
+#tagContainer .tag {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+#tagContainer .tag:hover {
+  opacity: 0.7;
+}
+
+#tagContainer .tag .delete {
+  margin-left: 0.5rem;
+}
+
+/* Loading Indicator */
+#loadingIndicator {
+  padding: 3rem;
+}
+
+/* Empty State */
+#emptyState {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .navbar-brand .title {
+    font-size: 1.25rem;
+  }
+
+  .snippet-card {
+    margin-bottom: 1rem;
+  }
+
+  .modal-card {
+    width: 95%;
+  }
+
+  .code-container {
+    font-size: 0.75rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.snippet-card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Scrollbar Styling */
+.code-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.code-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.code-container::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.code-container::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Success/Error Messages */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 400px;
+  z-index: 9999;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Utility Classes */
+.is-hidden {
+  display: none !important;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}

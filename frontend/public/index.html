@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeSnippet Manager</title>
+  
+  <!-- Bulma CSS Framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  
+  <!-- Prism.js for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Application Container -->
+  <div id="app">
+    
+    <!-- Header/Navbar -->
+    <nav class="navbar is-primary" role="navigation">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <i class="fas fa-code fa-2x"></i>
+          <h1 class="title is-4 has-text-white ml-3">CodeSnippet Manager</h1>
+        </div>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <button class="button is-light" id="addSnippetBtn">
+              <i class="fas fa-plus"></i>
+              <span>Add Snippet</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="section">
+      <div class="container">
+        
+        <!-- Search Bar -->
+        <div class="box" id="searchContainer">
+          <div class="field has-addons">
+            <div class="control is-expanded has-icons-left">
+              <input 
+                class="input is-medium" 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search snippets by title, language, tags, or code...">
+              <span class="icon is-left">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Snippet Modal -->
+        <div class="modal" id="snippetModal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Add New Snippet</p>
+              <button class="delete" id="closeModal"></button>
+            </header>
+            <section class="modal-card-body">
+              
+              <!-- Title Input -->
+              <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input class="input" type="text" id="snippetTitle" placeholder="Enter snippet title">
+                </div>
+              </div>
+
+              <!-- Language Selection -->
+              <div class="field">
+                <label class="label">Language</label>
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select id="snippetLanguage"></select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Code Textarea -->
+              <div class="field">
+                <label class="label">Code</label>
+                <div class="control">
+                  <textarea 
+                    class="textarea" 
+                    id="snippetCode" 
+                    rows="10" 
+                    placeholder="Paste your code here..."></textarea>
+                </div>
+              </div>
+
+              <!-- Tags Input -->
+              <div class="field">
+                <label class="label">Tags</label>
+                <div class="field has-addons">
+                  <div class="control is-expanded">
+                    <input class="input" type="text" id="tagInput" placeholder="Add tags">
+                  </div>
+                  <div class="control">
+                    <button class="button is-info" id="addTagBtn">Add Tag</button>
+                  </div>
+                </div>
+                <div id="tagContainer" class="tags mt-2"></div>
+              </div>
+
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success" id="saveSnippetBtn">Save Snippet</button>
+              <button class="button" id="cancelBtn">Cancel</button>
+            </footer>
+          </div>
+        </div>
+
+        <!-- Snippets Grid -->
+        <div id="snippetsContainer" class="columns is-multiline">
+          <!-- Snippet cards will be dynamically inserted here -->
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="has-text-centered is-hidden">
+          <button class="button is-loading is-large is-ghost"></button>
+          <p class="mt-3">Loading snippets...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="box has-text-centered is-hidden">
+          <i class="fas fa-code fa-5x has-text-grey-light"></i>
+          <p class="title is-4 mt-4">No snippets found</p>
+          <p class="subtitle is-6">Click "Add Snippet" to create your first code snippet</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Prism.js for Syntax Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+  
+  <!-- Application Scripts -->
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>
